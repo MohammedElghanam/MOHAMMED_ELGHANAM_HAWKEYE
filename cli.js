@@ -122,4 +122,22 @@ function analyzeCode() {
   console.log(`✅ Report generated: hawkeye.report.json (${results.length} issues found)`);
 }
 
+function launchDashboard() {
+    const http = require('http');
+    const server = http.createServer((req, res) => {
+      if (req.url === '/hawkeye.report.json') {
+        const data = fs.readFileSync('hawkeye.report.json', 'utf-8');
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(data);
+      } else {
+        const html = fs.readFileSync(path.join(__dirname, 'dashboard/index.html'), 'utf-8');
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(html);
+      }
+    });
   
+    server.listen(9000, () => {
+      console.log('✅ Dashboard exit in http://localhost:9000');
+    });
+}
+   
