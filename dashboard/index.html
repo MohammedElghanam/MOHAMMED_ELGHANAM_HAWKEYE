@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>Longli Dashboard</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f8f8f8; }
+    table { border-collapse: collapse; width: 100%; }
+    td, th { border: 1px solid #ccc; padding: 8px; }
+    th { background: #eee; }
+  </style>
+</head>
+<body>
+  <h1>Hawkeye - report analyze</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>file</th>
+        <th>line</th>
+        <th>issue</th>
+      </tr>
+    </thead>
+    <tbody id="reportBody"></tbody>
+  </table>
+
+  <script>
+    fetch('hawkeye.report.json')
+      .then(res => res.json())
+      .then(data => {
+        const body = document.getElementById('reportBody');
+        data.forEach(item => {
+          const row = document.createElement('tr');
+          row.innerHTML = `<td>${item.file}</td><td>${item.line}</td><td>${item.issue}</td>`;
+          body.appendChild(row);
+        });
+      });
+  </script>
+</body>
+</html>
