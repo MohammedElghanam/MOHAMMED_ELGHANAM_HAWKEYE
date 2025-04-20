@@ -1,0 +1,23 @@
+{
+  "name": "mohammed_elghanam_hawkeye",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MohammedElghanam/MOHAMMED_ELGHANAM_HAWKEYE.git"
+  },
+  "bin": {
+    "hawkeye": "./cli.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MohammedElghanam/MOHAMMED_ELGHANAM_HAWKEYE/issues"
+  },
+  "homepage": "https://github.com/MohammedElghanam/MOHAMMED_ELGHANAM_HAWKEYE#readme",
+  "description": ""
+}
