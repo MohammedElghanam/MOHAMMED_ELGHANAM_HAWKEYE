@@ -19,3 +19,18 @@ switch (command) {
   default:
     console.log(' The Command not exist. use this commands: init | analyze | dashboard');
 }
+
+
+function initConfig() {
+    const config = {
+      projectName: path.basename(process.cwd()),
+      rules: {
+        noEval: true,
+        noConsoleLog: true
+      }
+    };
+  
+    fs.writeFileSync('hawkeye.config.json', JSON.stringify(config, null, 2));
+    console.log('configuration file created successfully ✅: hawkeye.config.json');
+}
+  
