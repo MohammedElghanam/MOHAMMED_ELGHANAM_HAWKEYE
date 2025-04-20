@@ -12,6 +12,9 @@
   "bin": {
     "hawkeye": "./cli.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
