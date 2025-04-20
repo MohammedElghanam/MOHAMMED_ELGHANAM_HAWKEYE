@@ -23,19 +23,21 @@ switch (command) {
 
 function initConfig() {
     const config = {
-      projectName: path.basename(process.cwd()),
-      rules: {
-        noEval: true,
-        noConsoleLog: true,
-        noFunctionConstructor: true,
-        noInnerHTML: true,
-        noDocumentWrite: true,
-        noSetTimeoutString: true,
-        noSetIntervalString: true,
-        noUnguardedStorage: true,
-        noGlobalVar: true,
-        noEmptyCatch: true
-      }
+        projectName: path.basename(process.cwd()),
+        include: ["src/", "lib/"],
+        exclude: ["node_modules/", "dist/"],
+        rules: {
+            noEval: true,
+            noConsoleLog: true,
+            noFunctionConstructor: true,
+            noInnerHTML: true,
+            noDocumentWrite: true,
+            noSetTimeoutString: true,
+            noSetIntervalString: true,
+            noUnguardedStorage: true,
+            noGlobalVar: true,
+            noEmptyCatch: true
+        }
     };
   
     fs.writeFileSync('hawkeye.config.json', JSON.stringify(config, null, 2));
