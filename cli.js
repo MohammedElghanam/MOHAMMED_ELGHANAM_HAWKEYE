@@ -24,8 +24,8 @@ switch (command) {
 function initConfig() {
     const config = {
         projectName: path.basename(process.cwd()),
-        include: ["src/", "lib/"],
-        exclude: ["node_modules/", "dist/"],
+        include: ["src", "lib"],
+        exclude: ["node_modules", "dist"],
         rules: {
             noEval: true,
             noConsoleLog: true,
@@ -108,7 +108,12 @@ function analyzeCode() {
     const files = fs.readdirSync(dir);
     files.forEach(file => {
       const fullPath = path.join(dir, file);
+      const relativePath = path.relative(process.cwd(), fullPath);
       const stat = fs.statSync(fullPath);
+
+      if (config.exclude.some(excluded => relativePath.startsWith(excluded))) {
+        return;
+      }
 
       if (stat.isDirectory()) {
         scanDirectory(fullPath);
