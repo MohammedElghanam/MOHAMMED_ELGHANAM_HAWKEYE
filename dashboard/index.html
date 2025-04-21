@@ -390,11 +390,11 @@
                 let severityClass1 = '';
                 if (item.issue) {
                   if (item.issue.includes('security') || item.issue.includes('leak') || item.issue.includes('eval')) {
-                    severityClass1 = 'bg-white';
+                    severityClass1 = 'h';
                   } else if (item.issue.includes('console.log') || item.issue.includes('performance')) {
-                    severityClass1 = 'bg-white';
+                    severityClass1 = 'm';
                   } else {
-                    severityClass1 = 'bg-white';
+                    severityClass1 = 'l';
                   }
                 }
                 
@@ -513,11 +513,11 @@
         rows.forEach(row => {
           if (filter === 'all') {
             row.style.display = '';
-          } else if (filter === 'high' && row.classList.contains('bg-red-50')) {
+          } else if (filter === 'high' && row.classList.contains('h')) {
             row.style.display = '';
-          } else if (filter === 'medium' && row.classList.contains('bg-yellow-50')) {
+          } else if (filter === 'medium' && row.classList.contains('m')) {
             row.style.display = '';
-          } else if (filter === 'low' && row.classList.contains('bg-blue-50')) {
+          } else if (filter === 'low' && row.classList.contains('l')) {
             row.style.display = '';
           } else {
             row.style.display = 'none';
