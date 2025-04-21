@@ -49,19 +49,20 @@
     "projectName": "my-project",
     "include": ["src", "lib"],
     "exclude": ["node_modules", "test"],
-    "rules": {
-        "noEval": true,
-        "noConsoleLog": true,
-        "noFunctionConstructor": true,
-        "noInnerHTML": true,
-        "noDocumentWrite": true,
-        "noSetTimeoutString": true,
-        "noSetIntervalString": true,
-        "noUnguardedStorage": true,
-        "noGlobalVar": true,
-        "noEmptyCatch": true
+        "rules": {
+            "noEval": true,
+            "noConsoleLog": true,
+            "noFunctionConstructor": true,
+            "noInnerHTML": true,
+            "noDocumentWrite": true,
+            "noSetTimeoutString": true,
+            "noSetIntervalString": true,
+            "noUnguardedStorage": true,
+            "noGlobalVar": true,
+            "noEmptyCatch": true
+        }
     }
-    }
+```
 
 ## 🎯 Why this configuration?
     This file gives developers full control over the analysis process.
