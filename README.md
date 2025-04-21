@@ -14,7 +14,6 @@
 - [🚀 Installation](#-installation)  
 - [⚡ Usage](#-usage)  
 - [🔧 Configuration](#-configuration)  
-- [📸 Examples](#-examples)  
 - [🤝 Contributing](#-contributing)  
 - [📜 License](#-license)  
 
@@ -34,34 +33,65 @@ npm install -D mohammed_elghanam_hawkeye
 # or
 yarn add -D mohammed_elghanam_hawkeye
 
-## ⚙️ Usage
 
-```bash
+⚡ Usage
 npx hawkeye init        # Initialize the project
 npx hawkeye analyze     # Analyze the code for issues
 npx hawkeye dashboard   # Open the dashboard to view results
 
-## ⚙️ Configuration File: `hawkeye.config.json`
 
-You can configure Hawkeye behavior by editing the `hawkeye.config.json` file. This file allows you to control what parts of your code are scanned and which rules to activate.
+🔧 Configuration
+You can configure Hawkeye behavior by editing the hawkeye.config.json file.
+This file allows you to control what parts of your code are scanned and which rules to activate.
 
-### 🔍 Fields:
+🔍 Fields:
+{
+  "projectName": "my-project",
+  "include": ["src", "lib"],
+  "exclude": ["node_modules", "test"],
+  "rules": {
+    "noEval": true,
+    "noConsoleLog": true,
+    "noFunctionConstructor": true,
+    "noInnerHTML": true,
+    "noDocumentWrite": true,
+    "noSetTimeoutString": true,
+    "noSetIntervalString": true,
+    "noUnguardedStorage": true,
+    "noGlobalVar": true,
+    "noEmptyCatch": true
+  }
+}
 
-- `projectName`: The name of your project.
-- `include`: Array of folders or files you want to scan.
-- `exclude`: Array of folders or files you want to skip.
-- `rules`: A set of rules (true to activate, false to skip).
+🎯 Why this configuration?
+This file gives developers full control over the analysis process.
+For example, if you're only interested in detecting eval() usage and don't want to test for console.log, you can set:
+"rules": {
+  "noEval": true,
+  "noConsoleLog": false
+}
 
-### 🎯 Why this configuration?
 
-This file gives developers full control over the analysis process.  
-For example, if you're only interested in detecting `eval()` usage and don't want to test for `console.log`, you can simply set:
+🤝 Contributing
+Fork the repository
 
-```json
-"noEval": true,
-"noConsoleLog": false
+Create feature branch (git checkout -b feat/amazing-feature)
 
-## 📄 License
-MIT License © 2025 Mohammed Elghanam
+Commit changes (git commit -m 'Add amazing feature')
 
----
+Push to branch (git push origin feat/amazing-feature)
+
+Open Pull Request
+
+See our Contribution Guide for details.
+
+
+📜 License
+MIT © 2025 Mohammed Elghanam
+
+✉️ Contact
+GitHub: https://github.com/MohammedElghanam
+
+Email: elghanammohammed465@gmail.com
+
+Project Link: https://github.com/MohammedElghanam/MOHAMMED_ELGHANAM_HAWKEYE
