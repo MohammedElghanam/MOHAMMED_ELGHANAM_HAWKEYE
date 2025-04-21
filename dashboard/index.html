@@ -40,7 +40,7 @@
     }
   </style>
 </head>
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
   <div class="flex h-screen">
     <!-- Sidebar -->
     <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transition-transform duration-300 ease-in-out -translate-x-full md:translate-x-0">
@@ -128,7 +128,7 @@
     <!-- Main Content -->
     <div class="flex-1 flex flex-col md:ml-64">
       <!-- Header -->
-      <header class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm">
+      <header class="bg-white dark:bg-gray-800 ">
         <div class="flex items-center justify-between p-4">
           <button id="open-sidebar" class="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -198,7 +198,7 @@
         <div id="dashboard-content" class="hidden">
           <!-- Stats Cards -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+            <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
               <div class="p-6">
                 <div class="flex items-center justify-between">
                   <div>
@@ -215,7 +215,7 @@
                 </div>
               </div>
             </div>
-            <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+            <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
               <div class="p-6">
                 <div class="flex items-center justify-between">
                   <div>
@@ -233,7 +233,7 @@
                 </div>
               </div>
             </div>
-            <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+            <div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
               <div class="p-6">
                 <div class="flex items-center justify-between">
                   <div>
@@ -292,6 +292,7 @@
                           <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">File</th>
                           <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Line</th>
                           <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Issue</th>
+                          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">severity</th>
                         </tr>
                       </thead>
                       <tbody id="reportBody" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
@@ -386,34 +387,48 @@
                 const row = document.createElement('tr');
                 
                 // Add severity class based on issue content
-                let severityClass = '';
-                if (item.issue) {
-                  if (item.issue.includes('security') || item.issue.includes('leak') || item.issue.includes('eval')) {
-                    severityClass = 'bg-red-50 dark:bg-red-900/20';
-                  } else if (item.issue.includes('console.log') || item.issue.includes('performance')) {
-                    severityClass = 'bg-yellow-50 dark:bg-yellow-900/20';
-                  } else {
-                    severityClass = 'bg-blue-50 dark:bg-blue-900/20';
-                  }
-                }
+                // let severityClass = '';
+                // if (item.issue) {
+                //   if (item.issue.includes('security') || item.issue.includes('leak') || item.issue.includes('eval')) {
+                //     severityClass = 'bg-red-50 dark:bg-red-900/20';
+                //   } else if (item.issue.includes('console.log') || item.issue.includes('performance')) {
+                //     severityClass = 'bg-yellow-50 dark:bg-yellow-900/20';
+                //   } else {
+                //     severityClass = 'bg-blue-50 dark:bg-blue-900/20';
+                //   }
+                // }
                 
-                row.className = `hover:bg-gray-50 dark:hover:bg-gray-800 ${severityClass}`;
+                // row.className = `hover:bg-gray-50 dark:hover:bg-gray-800 ${severityClass}`;
+
+                const severityClass = {
+                    High: 'border-red-200 bg-red-50 text-red-600',
+                    Medium: 'border-yellow-200 bg-yellow-50 text-yellow-600',
+                    Low: 'border-green-200 bg-green-50 text-green-600'
+                };
+
                 
                 // Get file name from path
                 const fileName = item.file ? item.file.split(/[/\\]/).pop() : 'Unknown';
                 
                 row.innerHTML = `
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-gray-500 dark:text-gray-400">
-                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                      </svg>
-                      <span title="${item.file}">${fileName}</span>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">${item.line}</td>
-                  <td class="px-6 py-4">${item.issue}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 text-gray-500 dark:text-gray-400">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        <span title="${item.file}">${fileName}</span>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">${item.line}</td>
+                    <td class="px-6 py-4">${item.issue}</td>
+                    <td class="px-6 py-4">
+                        <p class="flex items-center justify-center px-3 py-1.5 text-sm font-medium rounded-full 
+                            border ${severityClass[item.severity]}">
+                            ${item.severity}
+                        </p>
+                    </td>
+
                 `;
                 
                 reportBody.appendChild(row);

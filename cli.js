@@ -60,48 +60,99 @@ function analyzeCode() {
     const lines = code.split('\n');
 
     lines.forEach((line, i) => {
-      const lineNumber = i + 1;
-
-      if (config.rules.noEval && /eval\s*\(/.test(line)) {
-        results.push({ file: filePath, line: lineNumber, issue: 'Use of eval() is discouraged due to security risks.' });
-      }
-
-      if (config.rules.noConsoleLog && /console\.log\s*\(/.test(line)) {
-        results.push({ file: filePath, line: lineNumber, issue: 'Avoid using console.log() in production code.' });
-      }
-
-      if (config.rules.noFunctionConstructor && /new\s+Function\s*\(/.test(line)) {
-        results.push({ file: filePath, line: lineNumber, issue: 'Avoid using Function constructor due to security concerns.' });
-      }
-
-      if (config.rules.noInnerHTML && /\.innerHTML\s*=/.test(line)) {
-        results.push({ file: filePath, line: lineNumber, issue: 'Direct use of innerHTML can lead to XSS vulnerabilities.' });
-      }
-
-      if (config.rules.noDocumentWrite && /document\.write\s*\(/.test(line)) {
-        results.push({ file: filePath, line: lineNumber, issue: 'Avoid using document.write(); it can overwrite the document and is generally unsafe.' });
-      }
-
-      if (config.rules.noSetTimeoutString && /setTimeout\s*\(\s*['"`]/.test(line)) {
-        results.push({ file: filePath, line: lineNumber, issue: 'Avoid passing strings to setTimeout(); use a function instead.' });
-      }
-
-      if (config.rules.noSetIntervalString && /setInterval\s*\(\s*['"`]/.test(line)) {
-        results.push({ file: filePath, line: lineNumber, issue: 'Avoid passing strings to setInterval(); use a function instead.' });
-      }
-
-      if (config.rules.noUnguardedStorage && /localStorage\.setItem|sessionStorage\.setItem/.test(line)) {
-        results.push({ file: filePath, line: lineNumber, issue: 'Avoid storing unvalidated data in localStorage or sessionStorage.' });
-      }
-
-      if (config.rules.noGlobalVar && /^\s*[a-zA-Z_$][0-9a-zA-Z_$]*\s*=/.test(line)) {
-        results.push({ file: filePath, line: lineNumber, issue: 'Detected variable assignment without let/const/var. This may create a global variable.' });
-      }
-
-      if (config.rules.noEmptyCatch && /catch\s*\(\s*\w*\s*\)\s*\{\s*\}/.test(line)) {
-        results.push({ file: filePath, line: lineNumber, issue: 'Empty catch block detected. Consider handling the error appropriately.' });
-      }
+        const lineNumber = i + 1;
+      
+        if (config.rules.noEval && /eval\s*\(/.test(line)) {
+          results.push({
+            file: filePath,
+            line: lineNumber,
+            issue: 'Use of eval() is discouraged due to security risks.',
+            severity: 'High'
+          });
+        }
+      
+        if (config.rules.noConsoleLog && /console\.log\s*\(/.test(line)) {
+          results.push({
+            file: filePath,
+            line: lineNumber,
+            issue: 'Avoid using console.log() in production code.',
+            severity: 'Low'
+          });
+        }
+      
+        if (config.rules.noFunctionConstructor && /new\s+Function\s*\(/.test(line)) {
+          results.push({
+            file: filePath,
+            line: lineNumber,
+            issue: 'Avoid using Function constructor due to security concerns.',
+            severity: 'High'
+          });
+        }
+      
+        if (config.rules.noInnerHTML && /\.innerHTML\s*=/.test(line)) {
+          results.push({
+            file: filePath,
+            line: lineNumber,
+            issue: 'Direct use of innerHTML can lead to XSS vulnerabilities.',
+            severity: 'High'
+          });
+        }
+      
+        if (config.rules.noDocumentWrite && /document\.write\s*\(/.test(line)) {
+          results.push({
+            file: filePath,
+            line: lineNumber,
+            issue: 'Avoid using document.write(); it can overwrite the document and is generally unsafe.',
+            severity: 'Medium'
+          });
+        }
+      
+        if (config.rules.noSetTimeoutString && /setTimeout\s*\(\s*['"`]/.test(line)) {
+          results.push({
+            file: filePath,
+            line: lineNumber,
+            issue: 'Avoid passing strings to setTimeout(); use a function instead.',
+            severity: 'Medium'
+          });
+        }
+      
+        if (config.rules.noSetIntervalString && /setInterval\s*\(\s*['"`]/.test(line)) {
+          results.push({
+            file: filePath,
+            line: lineNumber,
+            issue: 'Avoid passing strings to setInterval(); use a function instead.',
+            severity: 'Medium'
+          });
+        }
+      
+        if (config.rules.noUnguardedStorage && /localStorage\.setItem|sessionStorage\.setItem/.test(line)) {
+          results.push({
+            file: filePath,
+            line: lineNumber,
+            issue: 'Avoid storing unvalidated data in localStorage or sessionStorage.',
+            severity: 'Medium'
+          });
+        }
+      
+        if (config.rules.noGlobalVar && /^\s*[a-zA-Z_$][0-9a-zA-Z_$]*\s*=/.test(line)) {
+          results.push({
+            file: filePath,
+            line: lineNumber,
+            issue: 'Detected variable assignment without let/const/var. This may create a global variable.',
+            severity: 'Low'
+          });
+        }
+      
+        if (config.rules.noEmptyCatch && /catch\s*\(\s*\w*\s*\)\s*\{\s*\}/.test(line)) {
+          results.push({
+            file: filePath,
+            line: lineNumber,
+            issue: 'Empty catch block detected. Consider handling the error appropriately.',
+            severity: 'Low'
+          });
+        }
     });
+      
   }
 
   function scanDirectory(dir) {
