@@ -34,16 +34,17 @@
     yarn add -D mohammed_elghanam_hawkeye
 
 ## ⚡ Usage
-npx hawkeye init        # Initialize the project
-npx hawkeye analyze     # Analyze the code for issues
-npx hawkeye dashboard   # Open the dashboard to view results
+    npx hawkeye init        # Initialize the project
+    npx hawkeye analyze     # Analyze the code for issues
+    npx hawkeye dashboard   # Open the dashboard to view results
 
 
 🔧 Configuration
-You can configure Hawkeye behavior by editing the hawkeye.config.json file.
-This file allows you to control what parts of your code are scanned and which rules to activate.
+    You can configure Hawkeye behavior by editing the hawkeye.config.json file.
+    This file allows you to control what parts of your code are scanned and which rules to activate.
 
 🔍 Fields:
+```json
 {
   "projectName": "my-project",
   "include": ["src", "lib"],
@@ -63,12 +64,13 @@ This file allows you to control what parts of your code are scanned and which ru
 }
 
 🎯 Why this configuration?
-This file gives developers full control over the analysis process.
-For example, if you're only interested in detecting eval() usage and don't want to test for console.log, you can set:
-"rules": {
-  "noEval": true,
-  "noConsoleLog": false
-}
+    This file gives developers full control over the analysis process.
+    For example, if you're only interested in detecting eval() usage and don't want to test for console.log, you can set:
+    ```json  
+    "rules": {
+        "noEval": true,
+        "noConsoleLog": false
+    }
 
 
 🤝 Contributing
