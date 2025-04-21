@@ -386,10 +386,24 @@
             data.forEach(item => {
                 const row = document.createElement('tr');
                 
+                // Add severity class based on issue content
+                let severityClass1 = '';
+                if (item.issue) {
+                  if (item.issue.includes('security') || item.issue.includes('leak') || item.issue.includes('eval')) {
+                    severityClass1 = 'bg-white';
+                  } else if (item.issue.includes('console.log') || item.issue.includes('performance')) {
+                    severityClass1 = 'bg-white';
+                  } else {
+                    severityClass1 = 'bg-white';
+                  }
+                }
+                
+                row.className = `hover:bg-gray-50 dark:hover:bg-gray-800 ${severityClass1}`;
+
                 const severityClass = {
                     High: 'border-red-200 bg-red-50 text-red-600',
                     Medium: 'border-yellow-200 bg-yellow-50 text-yellow-600',
-                    Low: 'border-blue-200 bg-blue-50 text-blue-600'
+                    Low: 'border-green-200 bg-green-50 text-green-600'
                 };
 
                 
