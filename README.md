@@ -65,14 +65,15 @@
 ```
 
 ## 🎯 Why this configuration?
-    This file gives developers full control over the analysis process.
-    For example, if you're only interested in detecting eval() usage and don't want to test for console.log, you can set:
+This file gives developers full control over the analysis process.
+For example, if you're only interested in detecting eval() usage and don't want to test for console.log, you can set:
+
 ```json  
     "rules": {
         "noEval": true,
         "noConsoleLog": false
     }
-
+```
 
 ## 🤝 Contributing
     Fork the repository
