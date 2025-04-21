@@ -39,31 +39,31 @@
     npx hawkeye dashboard   # Open the dashboard to view results
 
 
-🔧 Configuration
+## 🔧 Configuration
     You can configure Hawkeye behavior by editing the hawkeye.config.json file.
     This file allows you to control what parts of your code are scanned and which rules to activate.
 
 🔍 Fields:
-```json
-{
-  "projectName": "my-project",
-  "include": ["src", "lib"],
-  "exclude": ["node_modules", "test"],
-  "rules": {
-    "noEval": true,
-    "noConsoleLog": true,
-    "noFunctionConstructor": true,
-    "noInnerHTML": true,
-    "noDocumentWrite": true,
-    "noSetTimeoutString": true,
-    "noSetIntervalString": true,
-    "noUnguardedStorage": true,
-    "noGlobalVar": true,
-    "noEmptyCatch": true
-  }
-}
+    ```json
+    {
+    "projectName": "my-project",
+    "include": ["src", "lib"],
+    "exclude": ["node_modules", "test"],
+    "rules": {
+        "noEval": true,
+        "noConsoleLog": true,
+        "noFunctionConstructor": true,
+        "noInnerHTML": true,
+        "noDocumentWrite": true,
+        "noSetTimeoutString": true,
+        "noSetIntervalString": true,
+        "noUnguardedStorage": true,
+        "noGlobalVar": true,
+        "noEmptyCatch": true
+    }
+    }
 
-🎯 Why this configuration?
+## 🎯 Why this configuration?
     This file gives developers full control over the analysis process.
     For example, if you're only interested in detecting eval() usage and don't want to test for console.log, you can set:
     ```json  
@@ -73,26 +73,26 @@
     }
 
 
-🤝 Contributing
-Fork the repository
+## 🤝 Contributing
+    Fork the repository
 
-Create feature branch (git checkout -b feat/amazing-feature)
+    Create feature branch (git checkout -b feat/amazing-feature)
 
-Commit changes (git commit -m 'Add amazing feature')
+    Commit changes (git commit -m 'Add amazing feature')
 
-Push to branch (git push origin feat/amazing-feature)
+    Push to branch (git push origin feat/amazing-feature)
 
-Open Pull Request
+    Open Pull Request
 
-See our Contribution Guide for details.
+    See our Contribution Guide for details.
 
 
-📜 License
-MIT © 2025 Mohammed Elghanam
+## 📜 License
+    MIT © 2025 Mohammed Elghanam
 
-✉️ Contact
-GitHub: https://github.com/MohammedElghanam
+## ✉️ Contact
+    GitHub: https://github.com/MohammedElghanam
 
-Email: elghanammohammed465@gmail.com
+    Email: elghanammohammed465@gmail.com
 
-Project Link: https://github.com/MohammedElghanam/MOHAMMED_ELGHANAM_HAWKEYE
+    Project Link: https://github.com/MohammedElghanam/MOHAMMED_ELGHANAM_HAWKEYE
