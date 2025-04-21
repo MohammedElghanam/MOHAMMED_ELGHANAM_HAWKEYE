@@ -28,11 +28,10 @@
 ---
 
 ## 🚀 Installation  
-```bash
-npm install -D mohammed_elghanam_hawkeye
-# or
-yarn add -D mohammed_elghanam_hawkeye
-```bash
+    ```bash
+    npm install -D mohammed_elghanam_hawkeye
+    # or
+    yarn add -D mohammed_elghanam_hawkeye
 
 ## ⚡ Usage
 npx hawkeye init        # Initialize the project
