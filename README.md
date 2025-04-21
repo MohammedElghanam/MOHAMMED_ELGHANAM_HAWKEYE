@@ -32,9 +32,9 @@
 npm install -D mohammed_elghanam_hawkeye
 # or
 yarn add -D mohammed_elghanam_hawkeye
+```bash
 
-
-⚡ Usage
+## ⚡ Usage
 npx hawkeye init        # Initialize the project
 npx hawkeye analyze     # Analyze the code for issues
 npx hawkeye dashboard   # Open the dashboard to view results
